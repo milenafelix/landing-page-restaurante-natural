@@ -1,4 +1,15 @@
-/* --- RESET & GERAL --- */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary-orange: #FE9F10;
+    --text-dark: #1E1E1E;
+    --text-gray: #6A6A6A;
+    --bg-white: #ffffff;
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.1);
+    --shadow-orange: 0 10px 20px rgba(254, 159, 16, 0.4);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,43 +18,32 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: var(--bg-white);
     color: #222;
     overflow-x: hidden;
-    min-height: 100vh; /* Mudança aqui: de height para min-height */
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-main.hero {
-    flex: 1;
-    height: auto; 
-    min-height: 100vh; 
-    padding-bottom: 100px; /* Espaço para não grudar na decoração */
-}
-
-/* --- VARIÁVEIS DE COR --- */
-:root {
-    --primary-orange: #FE9F10; /* Laranja extraído da imagem */
-    --text-dark: #1E1E1E;
-    --text-gray: #6A6A6A;
-    --bg-white: #ffffff;
-}
-
-/* --- FORMA LARANJA DE FUNDO --- */
+/* =========================================
+   2. SHARED LAYOUT ELEMENTS
+   ========================================= */
 .bg-shape {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50vw;  /* Largura ajustada para bater com o menu */
-    height: 100vh; /* Ocupa TODA a altura da tela */
+    width: 50vw;
+    height: 100vh;
     background-color: var(--primary-orange);
-    border-radius: 0 0 0 100%; 
-    z-index: -1; 
+    border-radius: 0 0 0 100%;
+    z-index: -1;
 }
 
-/* --- HEADER --- */
+/* =========================================
+   3. HEADER
+   ========================================= */
 header {
     display: flex;
     justify-content: space-between;
@@ -60,9 +60,11 @@ header {
     align-items: center;
     gap: 5px;
 }
-.logo i { color: #5CB85C; /* Folha verde no logo */ }
 
-/* Menu de Navegação */
+.logo i {
+    color: #5CB85C;
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -73,14 +75,16 @@ nav ul li a {
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    color: var(--text-dark); /* Texto preto mesmo sobre o laranja, conforme imagem */
+    color: var(--text-dark);
     position: relative;
+    transition: color 0.3s ease;
 }
 
-/* O link Home tem um estilo diferente (fora do laranja) e com bolinha */
-nav ul li a.active {
+nav ul li a.active,
+nav ul li a:hover {
     color: var(--text-dark);
 }
+
 nav ul li a.active::after {
     content: '';
     display: block;
@@ -91,7 +95,6 @@ nav ul li a.active::after {
     margin: 4px auto 0;
 }
 
-/* Header Actions */
 .header-actions {
     display: flex;
     align-items: center;
@@ -101,17 +104,18 @@ nav ul li a.active::after {
 .cart-icon {
     font-size: 1.4rem;
     color: var(--text-dark);
+    cursor: pointer;
 }
 
 .btn-booking {
-    background-color: white; /* Botão branco sobre fundo laranja */
+    background-color: white;
     color: var(--text-dark);
     padding: 10px 25px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-soft);
     transition: transform 0.2s;
 }
 
@@ -119,18 +123,19 @@ nav ul li a.active::after {
     transform: scale(1.05);
 }
 
-/* --- HERO SECTION --- */
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
 .hero {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6%;
-    min-height: 100vh; /* Garante que ocupe a tela inteira */
-    min-width: 100vw; /* Garante que ocupe a largura total */
+    padding: 0 6% 100px; /* Padding bottom extra para decoração */
+    min-height: 100vh;
     position: relative;
 }
 
-/* Coluna Esquerda */
 .hero-content {
     flex: 1;
     max-width: 500px;
@@ -163,7 +168,7 @@ nav ul li a.active::after {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 10px 20px rgba(254, 159, 16, 0.4); /* Sombra laranja difusa */
+    box-shadow: var(--shadow-orange);
     transition: 0.3s;
 }
 
@@ -172,7 +177,7 @@ nav ul li a.active::after {
     transform: translateY(-2px);
 }
 
-/* Coluna Direita (Imagem) */
+/* Hero Images */
 .hero-image-container {
     flex: 1;
     display: flex;
@@ -182,15 +187,14 @@ nav ul li a.active::after {
 }
 
 .dish-bg {
-    position: absolute; /* Sai do fluxo normal para ficar "solta" */
-    top: 50%;           /* Empurra para o meio vertical */
-    left: 70%;          /* Empurra para o meio horizontal */
-    transform: translate(-50%, -50%); /* Centraliza exatemente no meio */
-    
-    width: 110%;        /* Precisa ser MAIOR que o prato para aparecer (ajuste conforme necessário) */
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 110%;
     height: auto;
-    z-index: 5;         /* Camada baixa */
-    pointer-events: none; /* Garante que não atrapalhe cliques */
+    z-index: 5;
+    pointer-events: none;
 }
 
 .main-dish {
@@ -198,14 +202,10 @@ nav ul li a.active::after {
     height: 650px;
     object-fit: cover;
     border-radius: 50%;
-    /* Sombra suave abaixo do prato */
     position: relative;
     z-index: 10;
 }
 
-
-
-/* Decoração Canto Inferior Esquerdo */
 .decor-bottom {
     position: absolute;
     bottom: 100px;
@@ -220,90 +220,25 @@ nav ul li a.active::after {
     opacity: 0.9;
 }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
-@media (max-width: 1024px) {
-    .bg-shape {
-        width: 70vw;
-        border-bottom-left-radius: 80%;
-    }
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-    .main-dish {
-        width: 400px;
-        height: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-    }
-    
-    .bg-shape {
-        width: 100vw;
-        height: 40vh;
-        border-radius: 0 0 50% 50%; /* Curva diferente no mobile */
-        top: 0;
-    }
-    
-    nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-    
-    .hero {
-        flex-direction: column-reverse; /* Imagem em cima, texto em baixo */
-        text-align: center;
-        height: auto;
-        padding-top: 20px;
-    }
-    
-    .hero-image-container {
-        justify-content: center;
-        margin-bottom: 30px;
-        right: 0;
-    }
-    
-    .main-dish {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        margin: 0 auto 30px auto;
-    }
-    
-    .decor-bottom {
-        display: none; /* Esconde decoração no mobile para limpar a tela */
-    }
-    
-    .btn-booking {
-        background: var(--text-dark);
-        color: white;
-    }
-}
-
-/* --- ESTILOS DO RODAPÉ --- */
+/* =========================================
+   5. FOOTER
+   ========================================= */
 footer {
-    background-color: #f9f9f9; /* Cinza bem suave */
+    background-color: #f9f9f9;
     padding: 60px 6% 20px;
-    margin-top: auto; /* Garante que fique no final */
+    margin-top: auto;
     position: relative;
-    z-index: 10; /* Fica acima da forma laranja se ela descer muito */
+    z-index: 10;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr; /* Coluna da marca é maior */
+    grid-template-columns: 1.5fr 1fr 1fr;
     gap: 40px;
     margin-bottom: 40px;
 }
 
-/* Coluna da Marca */
+/* Brand Column */
 .brand-col p {
     color: var(--text-gray);
     font-size: 0.9rem;
@@ -327,7 +262,7 @@ footer {
     border-radius: 50%;
     color: var(--primary-orange);
     font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-soft);
     transition: 0.3s;
     text-decoration: none;
 }
@@ -338,7 +273,7 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Títulos das Colunas */
+/* Columns General */
 .footer-col h4 {
     font-size: 1.1rem;
     font-weight: 600;
@@ -346,7 +281,6 @@ footer {
     color: var(--text-dark);
 }
 
-/* Listas de Links e Contato */
 .footer-col ul {
     list-style: none;
 }
@@ -355,7 +289,8 @@ footer {
     margin-bottom: 12px;
 }
 
-.footer-col ul li a {
+.footer-col ul li a,
+.contact-col ul li {
     text-decoration: none;
     color: var(--text-gray);
     font-size: 0.95rem;
@@ -364,16 +299,13 @@ footer {
 
 .footer-col ul li a:hover {
     color: var(--primary-orange);
-    padding-left: 5px; /* Efeito de deslizar levemente */
+    padding-left: 5px;
 }
 
-/* Ícones de Contato */
 .contact-col ul li {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--text-gray);
-    font-size: 0.95rem;
 }
 
 .contact-col ul li i {
@@ -381,7 +313,6 @@ footer {
     font-size: 1.1rem;
 }
 
-/* Barra Inferior (Copyright) */
 .footer-bottom {
     border-top: 1px solid #e0e0e0;
     padding-top: 20px;
@@ -390,23 +321,99 @@ footer {
     font-size: 0.85rem;
 }
 
-/* --- RESPONSIVIDADE DO FOOTER --- */
+/* =========================================
+   6. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+
+/* Tablet / Laptop Médio */
+@media (max-width: 1024px) {
+    .bg-shape {
+        width: 70vw;
+        border-bottom-left-radius: 80%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .main-dish {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+    /* Layout Adjustments */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        padding-top: 20px;
+    }
+
     .footer-container {
-        grid-template-columns: 1fr; /* Uma coluna só no mobile */
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 30px;
     }
 
-    .brand-col p {
-        margin: 15px auto 20px auto; /* Centraliza o texto */
+    /* Shape Adjustments */
+    .bg-shape {
+        width: 100vw;
+        height: 40vh;
+        border-radius: 0 0 50% 50%;
+        top: 0;
     }
 
-    .social-links {
+    /* Elements Hiding/Styling */
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
         justify-content: center;
     }
 
+    .hero-image-container {
+        justify-content: center;
+        margin-bottom: 30px;
+        right: 0;
+        transform: none; /* Reset transform on mobile */
+    }
+
+    .main-dish {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        margin: 0 auto 30px auto;
+    }
+
+    .decor-bottom {
+        display: none;
+    }
+
+    .btn-booking {
+        background: var(--text-dark);
+        color: white;
+    }
+
+    /* Footer Mobile Specifics */
+    .brand-col p,
+    .social-links,
     .contact-col ul li {
         justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

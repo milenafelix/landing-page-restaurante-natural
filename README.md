@@ -50,7 +50,7 @@ O layout apresenta uma seção Hero com chamada para ação (CTA), imagem de des
         ├── graos.png
         └── ic--baseline-dinner-dining.svg
 ```
-##🚀 Como executar o projeto
+## 🚀 Como executar o projeto
 Clone este repositório:
 
 ```text
@@ -62,7 +62,7 @@ cd landing-page-restaurante-natural
 ```
 Abra o arquivo index.html no seu navegador preferido (Chrome, Firefox, Edge, etc).
 
-##🎨 Design
+## 🎨 Design
 O design foi pensado para transmitir frescor e naturalidade, utilizando:
 
 Cor Primária: Laranja (#FE9F10) para estimular o apetite.
@@ -73,5 +73,6 @@ Espaço em Branco: Para manter o visual "clean" e sofisticado.
 
 Referências: https://www.behance.net/gallery/96647171/Foodie-Landing-Page?tracking_source=search_projects|lading+page+website+restaurant&l=0 
 
-##👩‍💻 Autora
+## 👩‍💻 Autora
 Desenvolvido com 🧡 por Milena Felix.
+
